@@ -19,7 +19,9 @@ public class DeplacementPersoScript : MonoBehaviour
     void Start()
     {
         // Active le verrouillage du curseur seulement si l'option est cochée. Utilie seulement avec la caméra simple "rotate".
-        if(curseurLock)Cursor.lockState = CursorLockMode.Locked;
+        if (curseurLock) Cursor.lockState = CursorLockMode.Locked;
+        
+        
     }
 
 
@@ -41,6 +43,8 @@ public class DeplacementPersoScript : MonoBehaviour
         horizontal. Ce vecteur doit être normalisé (pour éviter que le personnage se déplace plus vite en diagonale.
         On multiplie ce vecteur par la variable vitesseDeplacementPerso pour pouvoir ajuste la vitesse de déplacement.*/
 
+        Vector3 vecteurDeplacement = new Vector3(axeH, 0f, axeV).normalized * vitesseDeplacementPerso;
+        GetComponent<Rigidbody>().linearVelocity = vecteurDeplacement;
         //----------------------------------------------------------------------------------------------
 
         /* ### rotation du personnage simple ###
